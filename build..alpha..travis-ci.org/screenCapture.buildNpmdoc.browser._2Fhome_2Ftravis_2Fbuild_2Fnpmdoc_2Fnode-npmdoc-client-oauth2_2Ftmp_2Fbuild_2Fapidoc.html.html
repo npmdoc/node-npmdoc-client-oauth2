@@ -1,0 +1,357 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/mulesoft/js-client-oauth2">client-oauth2 (v4.0.0)</a>
+</h1>
+<h4>Straight-forward execution of OAuth 2.0 flows and authenticated API requests</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.client-oauth2">module client-oauth2</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.client-oauth2.Token">
+            function <span class="apidocSignatureSpan">client-oauth2.</span>Token
+            <span class="apidocSignatureSpan">(client, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">client-oauth2.</span>Token.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.client-oauth2.Token">module client-oauth2.Token</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.client-oauth2.Token.Token">
+            function <span class="apidocSignatureSpan">client-oauth2.</span>Token
+            <span class="apidocSignatureSpan">(client, data)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.client-oauth2.Token.prototype">module client-oauth2.Token.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.client-oauth2.Token.prototype.expired">
+            function <span class="apidocSignatureSpan">client-oauth2.Token.prototype.</span>expired
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.client-oauth2.Token.prototype.expiresIn">
+            function <span class="apidocSignatureSpan">client-oauth2.Token.prototype.</span>expiresIn
+            <span class="apidocSignatureSpan">(duration)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.client-oauth2.Token.prototype.refresh">
+            function <span class="apidocSignatureSpan">client-oauth2.Token.prototype.</span>refresh
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.client-oauth2.Token.prototype.sign">
+            function <span class="apidocSignatureSpan">client-oauth2.Token.prototype.</span>sign
+            <span class="apidocSignatureSpan">(requestObject)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.client-oauth2" id="apidoc.module.client-oauth2">module client-oauth2</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.client-oauth2.Token" id="apidoc.element.client-oauth2.Token">
+        function <span class="apidocSignatureSpan">client-oauth2.</span>Token
+        <span class="apidocSignatureSpan">(client, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ClientOAuth2Token(client, data) {
+  this.client = client
+  this.data = data
+  this.tokenType = data.token_type &amp;&amp; data.token_type.toLowerCase()
+  this.accessToken = data.access_token
+  this.refreshToken = data.refresh_token
+
+  this.expiresIn(Number(data.expires_in))
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.client-oauth2.Token" id="apidoc.module.client-oauth2.Token">module client-oauth2.Token</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.client-oauth2.Token.Token" id="apidoc.element.client-oauth2.Token.Token">
+        function <span class="apidocSignatureSpan">client-oauth2.</span>Token
+        <span class="apidocSignatureSpan">(client, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ClientOAuth2Token(client, data) {
+  this.client = client
+  this.data = data
+  this.tokenType = data.token_type &amp;&amp; data.token_type.toLowerCase()
+  this.accessToken = data.access_token
+  this.refreshToken = data.refresh_token
+
+  this.expiresIn(Number(data.expires_in))
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.client-oauth2.Token.prototype" id="apidoc.module.client-oauth2.Token.prototype">module client-oauth2.Token.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.client-oauth2.Token.prototype.expired" id="apidoc.element.client-oauth2.Token.prototype.expired">
+        function <span class="apidocSignatureSpan">client-oauth2.Token.prototype.</span>expired
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">expired = function () {
+  return Date.now() &gt; this.expires.getTime()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.client-oauth2.Token.prototype.expiresIn" id="apidoc.element.client-oauth2.Token.prototype.expiresIn">
+        function <span class="apidocSignatureSpan">client-oauth2.Token.prototype.</span>expiresIn
+        <span class="apidocSignatureSpan">(duration)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">expiresIn = function (duration) {
+  if (typeof duration === 'number') {
+    this.expires = new Date()
+    this.expires.setSeconds(this.expires.getSeconds() + duration)
+  } else if (duration instanceof Date) {
+    this.expires = new Date(duration.getTime())
+  } else {
+    throw new TypeError('Unknown duration: ' + duration)
+  }
+
+  return this.expires
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+To re-create an access token instance and make requests on behalf on the user, you can create an access token instance by using
+the `createToken` method on a client instance.
+
+```javascript
+// Can also just pass the raw `data` object in place of an argument.
+var token = githubAuth.createToken('access token', 'optional refresh token', 'optional token type', {
+data: 'raw user data' })
+
+// Set the token TTL.
+token.<span class="apidocCodeKeywordSpan">expiresIn</span>(1234) // Seconds.
+token.expiresIn(new Date('2016-11-08')) // Date.
+
+// Refresh the users credentials and save the new access token and info.
+token.refresh().then(storeNewToken)
+
+// Sign a standard HTTP request object, updating the URL with the access token
+// or adding authorization headers, depending on token type.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.client-oauth2.Token.prototype.refresh" id="apidoc.element.client-oauth2.Token.prototype.refresh">
+        function <span class="apidocSignatureSpan">client-oauth2.Token.prototype.</span>refresh
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">refresh = function (opts) {
+  var self = this
+  var options = Object.assign({}, this.client.options, opts)
+
+  if (!this.refreshToken) {
+    return Promise.reject(new Error('No refresh token'))
+  }
+
+  return this.client._request(requestOptions({
+    url: options.accessTokenUri,
+    method: 'POST',
+    headers: Object.assign({}, DEFAULT_HEADERS, {
+      Authorization: auth(options.clientId, options.clientSecret)
+    }),
+    body: {
+      refresh_token: this.refreshToken,
+      grant_type: 'refresh_token'
+    }
+  }, options))
+    .then(function (data) {
+      return self.client.createToken(Object.assign({}, self.data, data))
+    })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var token = githubAuth.createToken('access token', 'optional refresh token', 'optional token type', {
+data: 'raw user data' })
+
+// Set the token TTL.
+token.expiresIn(1234) // Seconds.
+token.expiresIn(new Date('2016-11-08')) // Date.
+
+// Refresh the users credentials and save the new access token and info.
+token.<span class="apidocCodeKeywordSpan">refresh</span>().then(storeNewToken)
+
+// Sign a standard HTTP request object, updating the URL with the access token
+// or adding authorization headers, depending on token type.
+token.sign({
+  method: 'get',
+  url: 'https://api.github.com/users'
+}) //=&gt; { method, url, headers, ... }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.client-oauth2.Token.prototype.sign" id="apidoc.element.client-oauth2.Token.prototype.sign">
+        function <span class="apidocSignatureSpan">client-oauth2.Token.prototype.</span>sign
+        <span class="apidocSignatureSpan">(requestObject)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sign = function (requestObject) {
+  if (!this.accessToken) {
+    throw new Error('Unable to sign without access token')
+  }
+
+  requestObject.headers = requestObject.headers || {}
+
+  if (this.tokenType === 'bearer') {
+    requestObject.headers.Authorization = 'Bearer ' + this.accessToken
+  } else {
+    var parts = requestObject.url.split('#')
+    var token = 'access_token=' + this.accessToken
+    var url = parts[0].replace(/[?&amp;]access_token=[^&amp;#]/, '')
+    var fragment = parts[1] ? '#' + parts[1] : ''
+
+    // Prepend the correct query string parameter to the url.
+    requestObject.url = url + (url.indexOf('?') &gt; -1 ? '&amp;' : '?') + token + fragment
+
+    // Attempt to avoid storing the url in proxies, since the access token
+    // is exposed in the query parameters.
+    requestObject.headers.Pragma = 'no-store'
+    requestObject.headers['Cache-Control'] = 'no-store'
+  }
+
+  return requestObject
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+token.expiresIn(new Date('2016-11-08')) // Date.
+
+// Refresh the users credentials and save the new access token and info.
+token.refresh().then(storeNewToken)
+
+// Sign a standard HTTP request object, updating the URL with the access token
+// or adding authorization headers, depending on token type.
+token.<span class="apidocCodeKeywordSpan">sign</span>({
+  method: 'get',
+  url: 'https://api.github.com/users'
+}) //=&gt; { method, url, headers, ... }
+```
+
+**P.S.** All authorization methods accept `options` as the last argument, useful for overriding the global configuration on a per
+-request basis.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
