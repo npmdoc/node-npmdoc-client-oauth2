@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/mulesoft/js-client-oauth2"
-
-    >client-oauth2 (v4.0.0)</a>
+    <a href="https://github.com/mulesoft/js-client-oauth2">client-oauth2 (v4.0.0)</a>
 </h1>
 <h4>Straight-forward execution of OAuth 2.0 flows and authenticated API requests</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.client-oauth2">module client-oauth2</a><ol>
 
@@ -288,7 +281,7 @@
     <li>description and source-code<pre class="apidocCodePre">function ClientOAuth2Token(client, data) {
   this.client = client
   this.data = data
-  this.tokenType = data.token_type &#x26;&#x26; data.token_type.toLowerCase()
+  this.tokenType = data.token_type &amp;&amp; data.token_type.toLowerCase()
   this.accessToken = data.access_token
   this.refreshToken = data.refresh_token
 
@@ -307,7 +300,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Token.prototype.expired = function () {
-  return Date.now() &#x3e; this.expires.getTime()
+  return Date.now() &gt; this.expires.getTime()
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -322,13 +315,13 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Token.prototype.expiresIn = function (duration) {
-  if (typeof duration === &#x27;number&#x27;) {
+  if (typeof duration === 'number') {
     this.expires = new Date()
     this.expires.setSeconds(this.expires.getSeconds() + duration)
   } else if (duration instanceof Date) {
     this.expires = new Date(duration.getTime())
   } else {
-    throw new TypeError(&#x27;Unknown duration: &#x27; + duration)
+    throw new TypeError('Unknown duration: ' + duration)
   }
 
   return this.expires
@@ -350,18 +343,18 @@
   var options = Object.assign({}, this.client.options, opts)
 
   if (!this.refreshToken) {
-    return Promise.reject(new Error(&#x27;No refresh token&#x27;))
+    return Promise.reject(new Error('No refresh token'))
   }
 
   return this.client._request(requestOptions({
     url: options.accessTokenUri,
-    method: &#x27;POST&#x27;,
+    method: 'POST',
     headers: Object.assign({}, DEFAULT_HEADERS, {
       Authorization: auth(options.clientId, options.clientSecret)
     }),
     body: {
       refresh_token: this.refreshToken,
-      grant_type: &#x27;refresh_token&#x27;
+      grant_type: 'refresh_token'
     }
   }, options))
     .then(function (data) {
@@ -382,26 +375,26 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Token.prototype.sign = function (requestObject) {
   if (!this.accessToken) {
-    throw new Error(&#x27;Unable to sign without access token&#x27;)
+    throw new Error('Unable to sign without access token')
   }
 
   requestObject.headers = requestObject.headers || {}
 
-  if (this.tokenType === &#x27;bearer&#x27;) {
-    requestObject.headers.Authorization = &#x27;Bearer &#x27; + this.accessToken
+  if (this.tokenType === 'bearer') {
+    requestObject.headers.Authorization = 'Bearer ' + this.accessToken
   } else {
-    var parts = requestObject.url.split(&#x27;#&#x27;)
-    var token = &#x27;access_token=&#x27; + this.accessToken
-    var url = parts[0].replace(/[?&#x26;]access_token=[^&#x26;#]/, &#x27;&#x27;)
-    var fragment = parts[1] ? &#x27;#&#x27; + parts[1] : &#x27;&#x27;
+    var parts = requestObject.url.split('#')
+    var token = 'access_token=' + this.accessToken
+    var url = parts[0].replace(/[?&amp;]access_token=[^&amp;#]/, '')
+    var fragment = parts[1] ? '#' + parts[1] : ''
 
     // Prepend the correct query string parameter to the url.
-    requestObject.url = url + (url.indexOf(&#x27;?&#x27;) &#x3e; -1 ? &#x27;&#x26;&#x27; : &#x27;?&#x27;) + token + fragment
+    requestObject.url = url + (url.indexOf('?') &gt; -1 ? '&amp;' : '?') + token + fragment
 
     // Attempt to avoid storing the url in proxies, since the access token
     // is exposed in the query parameters.
-    requestObject.headers.Pragma = &#x27;no-store&#x27;
-    requestObject.headers[&#x27;Cache-Control&#x27;] = &#x27;no-store&#x27;
+    requestObject.headers.Pragma = 'no-store'
+    requestObject.headers['Cache-Control'] = 'no-store'
   }
 
   return requestObject
@@ -443,7 +436,7 @@
     <li>description and source-code<pre class="apidocCodePre">function ClientOAuth2Token(client, data) {
   this.client = client
   this.data = data
-  this.tokenType = data.token_type &#x26;&#x26; data.token_type.toLowerCase()
+  this.tokenType = data.token_type &amp;&amp; data.token_type.toLowerCase()
   this.accessToken = data.access_token
   this.refreshToken = data.refresh_token
 
@@ -467,7 +460,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">expired = function () {
-  return Date.now() &#x3e; this.expires.getTime()
+  return Date.now() &gt; this.expires.getTime()
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -482,13 +475,13 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">expiresIn = function (duration) {
-  if (typeof duration === &#x27;number&#x27;) {
+  if (typeof duration === 'number') {
     this.expires = new Date()
     this.expires.setSeconds(this.expires.getSeconds() + duration)
   } else if (duration instanceof Date) {
     this.expires = new Date(duration.getTime())
   } else {
-    throw new TypeError(&#x27;Unknown duration: &#x27; + duration)
+    throw new TypeError('Unknown duration: ' + duration)
   }
 
   return this.expires
@@ -499,12 +492,12 @@ the `createToken` method on a client instance.
 
 ```javascript
 // Can also just pass the raw `data` object in place of an argument.
-var token = githubAuth.createToken(&#x27;access token&#x27;, &#x27;optional refresh token&#x27;, &#x27;optional token type&#x27;, {
-data: &#x27;raw user data&#x27; })
+var token = githubAuth.createToken('access token', 'optional refresh token', 'optional token type', {
+data: 'raw user data' })
 
 // Set the token TTL.
 token.<span class="apidocCodeKeywordSpan">expiresIn</span>(1234) // Seconds.
-token.expiresIn(new Date(&#x27;2016-11-08&#x27;)) // Date.
+token.expiresIn(new Date('2016-11-08')) // Date.
 
 // Refresh the users credentials and save the new access token and info.
 token.refresh().then(storeNewToken)
@@ -528,18 +521,18 @@ token.refresh().then(storeNewToken)
   var options = Object.assign({}, this.client.options, opts)
 
   if (!this.refreshToken) {
-    return Promise.reject(new Error(&#x27;No refresh token&#x27;))
+    return Promise.reject(new Error('No refresh token'))
   }
 
   return this.client._request(requestOptions({
     url: options.accessTokenUri,
-    method: &#x27;POST&#x27;,
+    method: 'POST',
     headers: Object.assign({}, DEFAULT_HEADERS, {
       Authorization: auth(options.clientId, options.clientSecret)
     }),
     body: {
       refresh_token: this.refreshToken,
-      grant_type: &#x27;refresh_token&#x27;
+      grant_type: 'refresh_token'
     }
   }, options))
     .then(function (data) {
@@ -547,12 +540,12 @@ token.refresh().then(storeNewToken)
     })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var token = githubAuth.createToken(&#x27;access token&#x27;, &#x27;optional refresh token&#x27;, &#x27;optional token type&#x27;, {
-data: &#x27;raw user data&#x27; })
+var token = githubAuth.createToken('access token', 'optional refresh token', 'optional token type', {
+data: 'raw user data' })
 
 // Set the token TTL.
 token.expiresIn(1234) // Seconds.
-token.expiresIn(new Date(&#x27;2016-11-08&#x27;)) // Date.
+token.expiresIn(new Date('2016-11-08')) // Date.
 
 // Refresh the users credentials and save the new access token and info.
 token.<span class="apidocCodeKeywordSpan">refresh</span>().then(storeNewToken)
@@ -560,9 +553,9 @@ token.<span class="apidocCodeKeywordSpan">refresh</span>().then(storeNewToken)
 // Sign a standard HTTP request object, updating the URL with the access token
 // or adding authorization headers, depending on token type.
 token.sign({
-  method: &#x27;get&#x27;,
-  url: &#x27;https://api.github.com/users&#x27;
-}) //=&#x3e; { method, url, headers, ... }
+  method: 'get',
+  url: 'https://api.github.com/users'
+}) //=&gt; { method, url, headers, ... }
 ...</pre></li>
     </ul>
 
@@ -577,32 +570,32 @@ token.sign({
     <ul>
     <li>description and source-code<pre class="apidocCodePre">sign = function (requestObject) {
   if (!this.accessToken) {
-    throw new Error(&#x27;Unable to sign without access token&#x27;)
+    throw new Error('Unable to sign without access token')
   }
 
   requestObject.headers = requestObject.headers || {}
 
-  if (this.tokenType === &#x27;bearer&#x27;) {
-    requestObject.headers.Authorization = &#x27;Bearer &#x27; + this.accessToken
+  if (this.tokenType === 'bearer') {
+    requestObject.headers.Authorization = 'Bearer ' + this.accessToken
   } else {
-    var parts = requestObject.url.split(&#x27;#&#x27;)
-    var token = &#x27;access_token=&#x27; + this.accessToken
-    var url = parts[0].replace(/[?&#x26;]access_token=[^&#x26;#]/, &#x27;&#x27;)
-    var fragment = parts[1] ? &#x27;#&#x27; + parts[1] : &#x27;&#x27;
+    var parts = requestObject.url.split('#')
+    var token = 'access_token=' + this.accessToken
+    var url = parts[0].replace(/[?&amp;]access_token=[^&amp;#]/, '')
+    var fragment = parts[1] ? '#' + parts[1] : ''
 
     // Prepend the correct query string parameter to the url.
-    requestObject.url = url + (url.indexOf(&#x27;?&#x27;) &#x3e; -1 ? &#x27;&#x26;&#x27; : &#x27;?&#x27;) + token + fragment
+    requestObject.url = url + (url.indexOf('?') &gt; -1 ? '&amp;' : '?') + token + fragment
 
     // Attempt to avoid storing the url in proxies, since the access token
     // is exposed in the query parameters.
-    requestObject.headers.Pragma = &#x27;no-store&#x27;
-    requestObject.headers[&#x27;Cache-Control&#x27;] = &#x27;no-store&#x27;
+    requestObject.headers.Pragma = 'no-store'
+    requestObject.headers['Cache-Control'] = 'no-store'
   }
 
   return requestObject
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-token.expiresIn(new Date(&#x27;2016-11-08&#x27;)) // Date.
+token.expiresIn(new Date('2016-11-08')) // Date.
 
 // Refresh the users credentials and save the new access token and info.
 token.refresh().then(storeNewToken)
@@ -610,9 +603,9 @@ token.refresh().then(storeNewToken)
 // Sign a standard HTTP request object, updating the URL with the access token
 // or adding authorization headers, depending on token type.
 token.<span class="apidocCodeKeywordSpan">sign</span>({
-  method: &#x27;get&#x27;,
-  url: &#x27;https://api.github.com/users&#x27;
-}) //=&#x3e; { method, url, headers, ... }
+  method: 'get',
+  url: 'https://api.github.com/users'
+}) //=&gt; { method, url, headers, ... }
 ```
 
 **P.S.** All authorization methods accept `options` as the last argument, useful for overriding the global configuration on a per
@@ -635,7 +628,7 @@ token.<span class="apidocCodeKeywordSpan">sign</span>({
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">expired = function () {
-  return Date.now() &#x3e; this.expires.getTime()
+  return Date.now() &gt; this.expires.getTime()
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -655,13 +648,13 @@ token.<span class="apidocCodeKeywordSpan">sign</span>({
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">expiresIn = function (duration) {
-  if (typeof duration === &#x27;number&#x27;) {
+  if (typeof duration === 'number') {
     this.expires = new Date()
     this.expires.setSeconds(this.expires.getSeconds() + duration)
   } else if (duration instanceof Date) {
     this.expires = new Date(duration.getTime())
   } else {
-    throw new TypeError(&#x27;Unknown duration: &#x27; + duration)
+    throw new TypeError('Unknown duration: ' + duration)
   }
 
   return this.expires
@@ -672,12 +665,12 @@ the `createToken` method on a client instance.
 
 ```javascript
 // Can also just pass the raw `data` object in place of an argument.
-var token = githubAuth.createToken(&#x27;access token&#x27;, &#x27;optional refresh token&#x27;, &#x27;optional token type&#x27;, {
-data: &#x27;raw user data&#x27; })
+var token = githubAuth.createToken('access token', 'optional refresh token', 'optional token type', {
+data: 'raw user data' })
 
 // Set the token TTL.
 token.<span class="apidocCodeKeywordSpan">expiresIn</span>(1234) // Seconds.
-token.expiresIn(new Date(&#x27;2016-11-08&#x27;)) // Date.
+token.expiresIn(new Date('2016-11-08')) // Date.
 
 // Refresh the users credentials and save the new access token and info.
 token.refresh().then(storeNewToken)
@@ -706,18 +699,18 @@ token.refresh().then(storeNewToken)
   var options = Object.assign({}, this.client.options, opts)
 
   if (!this.refreshToken) {
-    return Promise.reject(new Error(&#x27;No refresh token&#x27;))
+    return Promise.reject(new Error('No refresh token'))
   }
 
   return this.client._request(requestOptions({
     url: options.accessTokenUri,
-    method: &#x27;POST&#x27;,
+    method: 'POST',
     headers: Object.assign({}, DEFAULT_HEADERS, {
       Authorization: auth(options.clientId, options.clientSecret)
     }),
     body: {
       refresh_token: this.refreshToken,
-      grant_type: &#x27;refresh_token&#x27;
+      grant_type: 'refresh_token'
     }
   }, options))
     .then(function (data) {
@@ -725,12 +718,12 @@ token.refresh().then(storeNewToken)
     })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var token = githubAuth.createToken(&#x27;access token&#x27;, &#x27;optional refresh token&#x27;, &#x27;optional token type&#x27;, {
-data: &#x27;raw user data&#x27; })
+var token = githubAuth.createToken('access token', 'optional refresh token', 'optional token type', {
+data: 'raw user data' })
 
 // Set the token TTL.
 token.expiresIn(1234) // Seconds.
-token.expiresIn(new Date(&#x27;2016-11-08&#x27;)) // Date.
+token.expiresIn(new Date('2016-11-08')) // Date.
 
 // Refresh the users credentials and save the new access token and info.
 token.<span class="apidocCodeKeywordSpan">refresh</span>().then(storeNewToken)
@@ -738,9 +731,9 @@ token.<span class="apidocCodeKeywordSpan">refresh</span>().then(storeNewToken)
 // Sign a standard HTTP request object, updating the URL with the access token
 // or adding authorization headers, depending on token type.
 token.sign({
-  method: &#x27;get&#x27;,
-  url: &#x27;https://api.github.com/users&#x27;
-}) //=&#x3e; { method, url, headers, ... }
+  method: 'get',
+  url: 'https://api.github.com/users'
+}) //=&gt; { method, url, headers, ... }
 ...</pre></li>
     </ul>
 
@@ -760,32 +753,32 @@ token.sign({
     <ul>
     <li>description and source-code<pre class="apidocCodePre">sign = function (requestObject) {
   if (!this.accessToken) {
-    throw new Error(&#x27;Unable to sign without access token&#x27;)
+    throw new Error('Unable to sign without access token')
   }
 
   requestObject.headers = requestObject.headers || {}
 
-  if (this.tokenType === &#x27;bearer&#x27;) {
-    requestObject.headers.Authorization = &#x27;Bearer &#x27; + this.accessToken
+  if (this.tokenType === 'bearer') {
+    requestObject.headers.Authorization = 'Bearer ' + this.accessToken
   } else {
-    var parts = requestObject.url.split(&#x27;#&#x27;)
-    var token = &#x27;access_token=&#x27; + this.accessToken
-    var url = parts[0].replace(/[?&#x26;]access_token=[^&#x26;#]/, &#x27;&#x27;)
-    var fragment = parts[1] ? &#x27;#&#x27; + parts[1] : &#x27;&#x27;
+    var parts = requestObject.url.split('#')
+    var token = 'access_token=' + this.accessToken
+    var url = parts[0].replace(/[?&amp;]access_token=[^&amp;#]/, '')
+    var fragment = parts[1] ? '#' + parts[1] : ''
 
     // Prepend the correct query string parameter to the url.
-    requestObject.url = url + (url.indexOf(&#x27;?&#x27;) &#x3e; -1 ? &#x27;&#x26;&#x27; : &#x27;?&#x27;) + token + fragment
+    requestObject.url = url + (url.indexOf('?') &gt; -1 ? '&amp;' : '?') + token + fragment
 
     // Attempt to avoid storing the url in proxies, since the access token
     // is exposed in the query parameters.
-    requestObject.headers.Pragma = &#x27;no-store&#x27;
-    requestObject.headers[&#x27;Cache-Control&#x27;] = &#x27;no-store&#x27;
+    requestObject.headers.Pragma = 'no-store'
+    requestObject.headers['Cache-Control'] = 'no-store'
   }
 
   return requestObject
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-token.expiresIn(new Date(&#x27;2016-11-08&#x27;)) // Date.
+token.expiresIn(new Date('2016-11-08')) // Date.
 
 // Refresh the users credentials and save the new access token and info.
 token.refresh().then(storeNewToken)
@@ -793,9 +786,9 @@ token.refresh().then(storeNewToken)
 // Sign a standard HTTP request object, updating the URL with the access token
 // or adding authorization headers, depending on token type.
 token.<span class="apidocCodeKeywordSpan">sign</span>({
-  method: &#x27;get&#x27;,
-  url: &#x27;https://api.github.com/users&#x27;
-}) //=&#x3e; { method, url, headers, ... }
+  method: 'get',
+  url: 'https://api.github.com/users'
+}) //=&gt; { method, url, headers, ... }
 ```
 
 **P.S.** All authorization methods accept `options` as the last argument, useful for overriding the global configuration on a per
@@ -830,3 +823,4 @@ token.<span class="apidocCodeKeywordSpan">sign</span>({
     ]
 </div>
 </div>
+</body></html>
