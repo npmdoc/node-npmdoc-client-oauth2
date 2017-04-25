@@ -1,6 +1,6 @@
 # npmdoc-client-oauth2
 
-#### api documentation for  [client-oauth2 (v4.0.0)](https://github.com/mulesoft/js-client-oauth2)  [![npm package](https://img.shields.io/npm/v/npmdoc-client-oauth2.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-client-oauth2) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-client-oauth2.svg)](https://travis-ci.org/npmdoc/node-npmdoc-client-oauth2)
+#### basic api documentation for  [client-oauth2 (v4.0.0)](https://github.com/mulesoft/js-client-oauth2)  [![npm package](https://img.shields.io/npm/v/npmdoc-client-oauth2.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-client-oauth2) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-client-oauth2.svg)](https://travis-ci.org/npmdoc/node-npmdoc-client-oauth2)
 
 #### Straight-forward execution of OAuth 2.0 flows and authenticated API requests
 
@@ -113,7 +113,8 @@
         "test-server-open": "PORT=7357 node test/support/server.js & echo $! > server.pid"
     },
     "typings": "index.d.ts",
-    "version": "4.0.0"
+    "version": "4.0.0",
+    "bin": {}
 }
 ```
 
